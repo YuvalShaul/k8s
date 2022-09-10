@@ -1,0 +1,152 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-a-1
+  labels:
+    app.k8s.io/name: appA
+    app.k8s.io/release: "1"
+spec:
+  containers:
+  - name: busybox
+    image: busybox:latest
+    command:
+      - sleep
+      - "3600"
+    
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-b-1
+  labels:
+    app.k8s.io/name: appB
+    app.k8s.io/release: "1"
+    nice: not_so-much
+spec:
+  containers:
+  - name: busybox
+    image: busybox:latest
+    command:
+      - sleep
+      - "3600"
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-c-1
+  labels:
+    app.k8s.io/name: appC
+    app.k8s.io/release: "1"
+spec:
+  containers:
+  - name: busybox
+    image: busybox:latest
+    command:
+      - sleep
+      - "3600"
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-a-2
+  labels:
+    app.k8s.io/name: appA
+    app.k8s.io/release: "2"
+spec:
+  containers:
+  - name: busybox
+    image: busybox:latest
+    command:
+      - sleep
+      - "3600"
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-b-2
+  labels:
+    app.k8s.io/name: appB
+    app.k8s.io/release: "2"
+spec:
+  containers:
+  - name: busybox
+    image: busybox:latest
+    command:
+      - sleep
+      - "3600"
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-c-2
+  labels:
+    app.k8s.io/name: appC
+    app.k8s.io/release: "2"
+spec:
+  containers:
+  - name: busybox
+    image: busybox:latest
+    command:
+      - sleep
+      - "3600"
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-a-3
+  labels:
+    app.k8s.io/name: appA
+    app.k8s.io/release: "3"
+    nice: very
+spec:
+  containers:
+  - name: busybox
+    image: busybox:latest
+    command:
+      - sleep
+      - "3600"
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-b-3
+  labels:
+    app.k8s.io/name: appB
+    app.k8s.io/release: "3"
+spec:
+  containers:
+  - name: busybox
+    image: busybox:latest
+    command:
+      - sleep
+      - "3600"
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-c-3
+  labels:
+    app.k8s.io/name: appC
+    app.k8s.io/release: "3"
+spec:
+  containers:
+  - name: busybox
+    image: busybox:latest
+    command:
+      - sleep
+      - "3600"
