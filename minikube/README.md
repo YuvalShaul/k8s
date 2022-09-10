@@ -18,6 +18,10 @@
 **minikube -p fournodes --nodes 4**
 - Delete a profile:  
 **minikube delete -p \<profile name\>**
+- You can stop a running profile:  
+**minikube stop -p \<profile name\>**
+- If you start a stopped profile, it will just start it (not create a new one):  
+**minikube start -p \<profile name\>**
 
 
 Try it yourself:  
