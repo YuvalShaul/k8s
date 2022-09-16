@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: volume-pod
+spec:
+  containers:
+  - name: busybox-a
+    image: radial/busyboxplus:curl
+    command:
+    - sleep
+    - "3600"
+    volumeMounts:
+    - name: common-volume
+      mountPath: /output-a
+  - name: busybox-b
+    image: radial/busyboxplus:curl
+    command:
+      - sleep
+      - "3600"
+    volumeMounts:
+    - name: common-volume
+      mountPath: /output-b
+  volumes:
+  - name: common-volume
+    hostPath:
+      path: /data
