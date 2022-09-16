@@ -15,8 +15,8 @@ No PersistentVolume, no PersistentVolumeClain, no StorageClass.
 
 - Connect to all worker nodes in your cluster, and verify that a /data directory is empty:  
 
-(use **kubectl get nodes** to see the names of your nodes).
-Example:  
+(use **kubectl get nodes** to see the names of your nodes).  
+This is what I udes in my cluster:  
 **minikube ssh -p four -n four**  
 **ls /data**  
 **minikube ssh -p four -n four-m02**  
@@ -28,7 +28,7 @@ Example:
 
 ## Create a multi container pod
 
-- Look at the definition of **my-pod.yaml** file from this lab.  
+- Look at the definition of **volume-pod.yaml** file from this lab.  
 It defines a single pod (called volume-pod), and 2 containers inside it.  
 It defined a single [hostPath](#https://kubernetes.io/docs/concepts/storage/volumes/#hostpath) volume.  
 Each container mounts this volume on a different container path.
@@ -44,7 +44,7 @@ Each container mounts this volume on a different container path.
 **ls /**  
 (look for the **output-a** directory)
 - Write a new file inside that directory:  
-**echo "hello from container a" > data.txt**
+**echo "hello from container a" > a.txt**
 - Exit from the container (**exit**)
 
 ## Things to do in container-b
@@ -56,28 +56,29 @@ Each container mounts this volume on a different container path.
 (look for the **output-b** directory)
 - Verify that there is a file called data.txt inside that directory, and look at its content:  
 **cd /output-b**  
-**cat data.txt**
+**cat a.txt**
 - exit from the container (**exit**)
 
 ## Look at the volume
 
 - Find the specific node where the pod is running:  
 **kubectl get pods -o wide**
-- Connect to another node, and verify that a /data directory does not exist:  
-**ssh osboxes@192.168.122.xx**  
+- Connect to some other node, and verify that a /data directory is still empty:  
+**minikube ssh -p four -n four-m02**  
 **ls /data**
-- Connect to the correct node, find the /data directory and view the ontent of the file:  
-**ssh osboxes@192.168.122.xx**  
+- Connect to the correct node (say four-m03), find the /data directory and view the ontent of the file:  
+**minikube ssh -p four -n four-m03**  
 **ls /data**  
-**cat /data/data.txt**
+**ls /data/vol-0**  
+**cat /data/vol-0/a.txt**
 
 ## Delete the pod
 
+- To ready for other labs, remove your changes.
 - Delete the pod:  
 **kubectl delete pods volume-pod**
 - Login again to the node where the pod was running:  
-**ssh osboxes@192.168.122.xx**
+**minikube ssh -p four -n four-m03**
 - Verify that:  
-  - the /data directory is still there
-  - the data.txt file and its content were not deleted.
+  - the /data directory and all the content that was created is still there.
 
