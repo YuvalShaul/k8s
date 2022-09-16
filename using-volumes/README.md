@@ -33,7 +33,7 @@ It defines a single pod (called volume-pod), and 2 containers inside it.
 It defined a single [hostPath](#https://kubernetes.io/docs/concepts/storage/volumes/#hostpath) volume.  
 Each container mounts this volume on a different container path.
 - Apply this file:  
-**kubectl apply -f my-pod.yaml**
+**kubectl apply -f volume-pods.yaml**
 
 
 ## Things to do in container-a
