@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: always-pod
+spec:
+  restartPolicy: Always
+  containers:
+  - name: busybox
+    image: k8s.gcr.io/busybox
+    command: ['sh', '-c', 'sleep 10']
