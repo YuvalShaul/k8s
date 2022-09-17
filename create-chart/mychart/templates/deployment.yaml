@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox-deployment-1
+  labels:
+    app: busybox
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: busybox-1
+  template:
+    metadata:
+      labels:
+        app: busybox-1
+    spec:
+      containers:
+      - name: busybox-1
+        image: busybox:latest
+        command:
+          - sleep
+          - "3600"
+ 
