@@ -1,4 +1,4 @@
-# 30 - Storage Classes
+# Storage Classes
 
 In this lab we'll demonstrate a basic use of storage classes.  
 **We'll not demonstrate dynamic provisioning of volumes!**  
