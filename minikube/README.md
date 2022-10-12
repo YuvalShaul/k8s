@@ -15,7 +15,7 @@
 - Start a profile specifying a name:  
 **minikube start -p \<profile name\>**
 - Start a profile with 4 worker nodes:  
-**minikube -p fournodes --nodes 4**
+**minikube start -p fournodes --nodes 4**
 - Delete a profile:  
 **minikube delete -p \<profile name\>**
 - You can stop a running profile:  
