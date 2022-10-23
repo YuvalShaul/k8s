@@ -1,4 +1,4 @@
-# 26 - Services
+# Services
 
 We'll use this lab to demonstrate services.
 
