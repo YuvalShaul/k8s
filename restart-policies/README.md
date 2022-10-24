@@ -1,6 +1,6 @@
 # Restart Policies
 
-In this lab we will demonstrate using probes to monitor containers health.
+In this lab we will demonstrate using restart policies.
 
 - [Always pod](#Always-pod)
 - [OnFailure pod](#OnFailure-pod)
