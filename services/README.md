@@ -54,3 +54,14 @@ This will create a NodePort type service that will be accessible from outside th
 **curl 192.168.122.11:30080**
 - You can now use a browser to see the same.  
 (notice: some browsers will not re-send an HTTP GET request each time you refresh your page.)
+
+## A LoadBalancer service
+
+- You can use minikube to help you run a service of type LoadBalancer.
+- Read [here](https://minikube.sigs.k8s.io/docs/handbook/accessing/#loadbalancer-access) for more details.
+- Split your screen and run the following command:  
+**minikube -p four tunnel**  
+(change to your profile name)
+- In the other screen, apply the load balancer service:  
+**kubectl apply -f load-balancer.yaml**
+
