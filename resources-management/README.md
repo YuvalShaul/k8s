@@ -1,6 +1,6 @@
-# 14 - Resource management
+# Resource - Management
 
-In this lab we are going to demonstrate resource requests.
+In this lab we are going to demonstrate resource requests and limits.
 
 - [Too many cpus required](#Too-many-cpus-required)
 - [Too much memory required](#Too-much-memory-required)
