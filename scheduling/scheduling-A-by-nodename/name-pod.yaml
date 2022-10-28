@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: name-pod
 spec:
-  nodeName: k8s-c
+  nodeName: four-m02
   containers:
   - name: busybox
     image: busybox:latest

@@ -2,12 +2,12 @@
 
 Use this lab to demonstrate **nodeName** scheduling configuration.
 
-- [Create a nodeName pod (node four-m02)](#Create-a-nodeName-pod-(node four-m02))
-- [Create a nodeName pod (node four)](#Create-a-nodeName-pod)
+- [Run a pod on a specific node](#Run-a-pod-on-a-specific-node)
+- [Run a pod on a control node](#Run-a-pod-on-a-control-node)
 
 
 
-## Create a nodeName pod (node four-m02)
+## Run a pod on a specific node
 
 - Look at the **name-pod.yaml** file from this lab:  
 It uses nodeName to directly select a specific node.  
@@ -19,7 +19,7 @@ It uses nodeName to directly select a specific node.
 - Delete the pod.
 
 
-## Create a nodeName pod (node four)
+## Run a pod on a control node
 
 - Specifying the node directly is powerfull!  
 What if we directly choose the control node?  
