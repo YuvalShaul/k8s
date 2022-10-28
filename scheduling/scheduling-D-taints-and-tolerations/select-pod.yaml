@@ -4,7 +4,7 @@ metadata:
   name: select-pod
 spec:
   nodeSelector:
-    goodrun: yes  
+    goodrun: "yes"
   containers:
   - name: busybox
     image: busybox:latest
