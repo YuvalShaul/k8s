@@ -1,4 +1,4 @@
-# 193 - Scheduling with nodeSelector
+# Scheduling with nodeSelector
 
 Use this lab we'll demonstrate **nodeSelector** configurations.
 
@@ -11,7 +11,7 @@ Use this lab we'll demonstrate **nodeSelector** configurations.
 - List your nodes:  
 **kubectl get nodes**
 - Label your node, by following this example:  
-**kubectl label nodes k8s-b special=yep**
+**kubectl label nodes four-m02 special=yep**
 - You can see that label by describing the node:
 **kubectl describe nodes <node-name>**
 
@@ -26,12 +26,12 @@ It uses nodeSelector to select a specific node.
 **kubectl get pods -o wide**
 - Delete your pod.
 - Delete the label from the node:  
-**kubectl label nodes k8s-b special-**
+**kubectl label nodes four-m02 special-**
 
 ## The same on the control node
 
 - Label a node again, this time the control node (same label):  
-**kubectl label nodes k8s-control special=yep**
+**kubectl label nodes four special=yep**
 - You don't have to change the pod definition, it still uses the same label.
 - Create your pod by applying the file:  
 **kubectl apply -f select-pod.yaml**
