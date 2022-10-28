@@ -30,6 +30,8 @@ It uses nodeSelector to select a specific node.
 
 ## The same on the control node
 
+- Remove the label from node four-m02:  
+**kubectl label node four-m02 special-**
 - Label a node again, this time the control node (same label):  
 **kubectl label nodes four special=yep**
 - You don't have to change the pod definition, it still uses the same label.
