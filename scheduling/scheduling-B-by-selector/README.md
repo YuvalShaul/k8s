@@ -40,4 +40,4 @@ It uses nodeSelector to select a specific node.
 - Is your pod running? What's going on?
 **kubectl get pods -o wide**
 - Delete your pod, but DO NOT DELETE THE LABEL.  
-You will fix this in the bext lab.
+You will fix this in the next lab.
