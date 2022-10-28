@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemonset-one
+spec:
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: busybox
+        image: busybox:latest
+        command: ['sh', '-c', 'while true; do rm -rf /my-app-data/*;  sleep 10; done']
+        volumeMounts:
+        - name: app-data
+          mountPath: /my-app-data
+      volumes:
+      - name: app-data
+        hostPath:
+          path: /etc/app-data

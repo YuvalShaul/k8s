@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-static-pod
+spec:
+  containers:
+  - name: busybox
+    image: busybox:latest
+    command:
+      - sleep
+      - "3600"
+  
