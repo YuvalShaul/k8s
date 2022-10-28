@@ -1,4 +1,4 @@
-# 20 - Daemonsets
+# Daemonsets
 
 In this lab we'll demonstrate the use of daemonsets.
 
@@ -27,14 +27,14 @@ or
 ## Use taints to limit the daemonset
 
 - Use a taint to limit a specific working node:  
-**kubectl taint nodes k8s-b notrun=daemonsets:NoSchedule**
+**kubectl taint nodes four-m02 notrun=daemonsets:NoSchedule**
 - Run your daemonset again:  
 **kubectl apply -f daemonset-one.yaml**
 - Verify your pods:  
 **kubectl get pods -o wide**  
 How many pods are running?  Where?
 - Delete the taint:  
-**kubectl taint nodes k8s-b notrun-**
+**kubectl taint nodes four-m02 notrun-**
 - Verify your pods again:  
 **kubectl get pods -o wide**  
 Any changes?
