@@ -1,4 +1,4 @@
-# 194 - Scheduling with affinity and anti-affinity
+# Scheduling with affinity and anti-affinity
 
 Use this lab we'll demonstrate node affinity configurations.
 
@@ -8,7 +8,7 @@ Use this lab we'll demonstrate node affinity configurations.
 
 
 - View your node labels:  
-**kubectl describe node k8s-b | more**
+**kubectl describe node four-m02 | more**
 - Notice a label that is going to be used with this lab:  
 ...
     kubernetes.io/os=linux
@@ -38,5 +38,5 @@ But if we don't find such a node, we'll run the pod anyway!!!
 **kubectl get pods -o wide**  
 Then delete the pod.
 - Let's add a label to a node (but choose a different one):  
-**kubectl label node k8s-c nodetype=good**
+**kubectl label node four-m03 nodetype=good**
 - Run the pod again, and see where it is running now.
