@@ -7,11 +7,11 @@ Use this lab we'll demonstrate tains and tolerations.
 ## Select a node to run but add a taint
 
 - Label a specific node as **good to run**, by following this example:  
-**kubectl label nodes four-m02 goodrun=true**
+**kubectl label nodes four-m02 goodrun=yes**
 - You can see that label by describing the node:
 **kubectl describe nodes <node-name>**
 - Now, taint that node, so that pods will not run on it:  
-**kubectl taint four-m02 goodrun  smell=bad:NoSchedule**  
+**kubectl taint four-m02  smell=bad:NoSchedule**  
 So now, pods should create a matching toleration for it, unless they do something about the smell.
 - Create the pod from this lab.:  
 **kubectl apply -f select-pod.yaml**
