@@ -11,7 +11,7 @@ spec:
     command:
       - sleep
       - "3600"
-  tolerations:
-  - key: "smell"
-    operator: "Exists"
-    effect: "NoSchedule"    
+  # tolerations:
+  # - key: "smell"
+  #   operator: "Exists"
+  #   effect: "NoSchedule"    
