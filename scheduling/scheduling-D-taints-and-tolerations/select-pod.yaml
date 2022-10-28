@@ -4,7 +4,7 @@ metadata:
   name: select-pod
 spec:
   nodeSelector:
-    special: yep  
+    goodrun: yes  
   containers:
   - name: busybox
     image: busybox:latest
@@ -12,6 +12,6 @@ spec:
       - sleep
       - "3600"
   tolerations:
-  - key: "node-role.kubernetes.io/master"
+  - key: "smell"
     operator: "Exists"
     effect: "NoSchedule"    
