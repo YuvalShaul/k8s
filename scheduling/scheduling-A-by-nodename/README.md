@@ -1,12 +1,13 @@
-# 191 - Scheduling nodeName Lab
+# Scheduling by a nodeName
 
 Use this lab to demonstrate **nodeName** scheduling configuration.
 
-- [Create a nodeName pod](#Create-a-nodeName-pod)
+- [Create a nodeName pod (node four-m02)](#Create-a-nodeName-pod-(node four-m02))
+- [Create a nodeName pod (node four)](#Create-a-nodeName-pod)
 
 
 
-## Create a nodeName pod (k8s-b)
+## Create a nodeName pod (node four-m02)
 
 - Look at the **name-pod.yaml** file from this lab:  
 It uses nodeName to directly select a specific node.  
@@ -18,7 +19,7 @@ It uses nodeName to directly select a specific node.
 - Delete the pod.
 
 
-## Create a nodeName pod (k8s-control)
+## Create a nodeName pod (node four)
 
 - Specifying the node directly is powerfull!  
 What if we directly choose the control node?  
