@@ -1,4 +1,4 @@
-# 27 - Kubernetes Ingress
+# Kubernetes Ingress
 
 We'll use this lab to demonstrate k8s ingress.
 
