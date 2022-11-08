@@ -13,7 +13,9 @@ We'll use this lab to demonstrate k8s ingress.
 - We'll be using the [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/)
 - Install ingress controller as explained in [this section](https://kubernetes.github.io/ingress-nginx/deploy/#bare-metal-clusters). 
 or
-for minikube use [this link](https://kubernetes.github.io/ingress-nginx/deploy/#minikube).
+for minikube use [this link](https://kubernetes.github.io/ingress-nginx/deploy/#minikube).  
+example:  
+**minikube addons enable ingress -p four**  
 We are using the option that installs the ingress service as a NodePort service.  
 This is the way it's going to communicate with the external world (the simplest way).  
 Please verify:  
