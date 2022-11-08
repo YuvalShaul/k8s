@@ -64,7 +64,7 @@ There is an explained example for this [here](https://kubernetes.github.io/ingre
 
 - This is a little tricky:  
 Let's start by looking at the Ingress:  
-**kubectl get ingress**  
+**kubectl get ingress -o wide**  
 - You should be able to see an IP address that blongs to one of your nodes.  
 This is correct, but the port number displayed is not the port nymber you should be using.
 - Look at the Ingress services:  
