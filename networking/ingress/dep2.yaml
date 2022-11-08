@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dep-2-pod
+  template:
+    metadata:
+      labels:
+        app: dep-2-pod
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.19.1
+        ports:
+        - containerPort: 80
