@@ -2,7 +2,7 @@
 
 In this lab you will create pods and delete them.
 
-## Create a pod mannualu
+## Create a pod manually
 
 - You can create a pod using a single cli command.  
 Try this:  
