@@ -23,8 +23,9 @@ I am leaving these instructions **as is**, and they still work, but newer versio
 - Later on, if your nat network stops working, you can start it again by typing:  
 **VBoxManage natnetwork stop  --netname k8s-nat**  
 **VBoxManage natnetwork start --netname k8s-nat**
-- Now, for each of you machines, right-click -> settings, choose **Network**,  and select "NAT Network" from the drop-down list. Make sure that the correct NAT network appears in "Name".
+- Now, in your template machine, right-click -> settings, choose **Network**,  and select "NAT Network" from the drop-down list. Make sure that the correct NAT network appears in "Name".
 - Open the "Advanced" option there, and make sure that the "Cable Connected" is checked.
+- Restart the machine, or power it on.
 
 
 ## IP addresses
@@ -39,22 +40,23 @@ I am leaving these instructions **as is**, and they still work, but newer versio
 - Learn how your single network interface is called:  
 **ip a sh**  
 (in my case: enp0s3)
-- Edit your networking parameters. Create the file name from the interface name:  
+- Edit your networking parameters. Create the file name (new file!) from the interface name:  
   - **sudo vi /etc/sysconfig/network-scripts/ifcfg-\<if name\>**
     - TYPE=Ethernet
     - BOOTPROTO=static
-    - IPADDR=192.168.122.x 
-    (x will be later 11,12,13 for k8s-a, k8s-b, k8s-c, and 10 for k8s-control, 100 for the host)
+    - IPADDR=192.168.122.15
+    (when you later clone the machines, it will be easier to change the addresses)
     - PREFIX=24
     - ONBOOT=yes
     - GATEWAY=192.168.122.1
     - DNS1=8.8.8.8
-  - restart the machine
+  - restart the machine:  
+  **sudo systemctl reboot**
 - If all goes well, you should be able to ping 8.8.8.8
 
 
 ## Add a user
-- Add a **osboxes** user and add it to the **wheel** group, so that it is a super-user:  
+- Add a **osboxes** user and add it to the [**wheel** group](https://en.wikipedia.org/wiki/Wheel_(computing)), so that it is a super-user:  
 **useradd -G wheel osboxes**
 - Set a password for the new user (while you are still in root):  
 **passwd osboxes**  
@@ -63,11 +65,13 @@ I am leaving these instructions **as is**, and they still work, but newer versio
 ## Clone Machines
 
 - Maybe it is best to leave the template machine...well..as a template.
+- **power off the template machine**  (so clone it only when it is shut down)
 - Clone it carefully in VirtualBox - to create 3 workers nodes and one control node:
-  - **Clone when machine is not working !**
+  - make sure: **Clone when machine is not working !**
   - right-click clone
-  - Rename your new machine (k8s-control, k8s-a, k8s-b, k8s-b)
-  - create new MAC addresses
+  - Name: k8s-control, k8s-a, k8s-b, k8s-b
+  - Generate new MAC addresses
+  - Uncheck other options
   - Full clone !!!
 - Configure 2 or more CPUs for your control node machine( settings/system).
 - Configure networking for your machines:
