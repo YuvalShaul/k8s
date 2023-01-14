@@ -13,9 +13,10 @@ It is now the time to create a network, and clone it.
 
 ## Configure NAT Networking
 
-Note:  
+- User cli to create NAT Network:  
 I am leaving these instructions **as is**, and they still work, but newer version of VirtualBox have a GUI to help you create NAT Networks (file->tools->network manager)  
-
+- DHCP:  
+Use static IP addresses for the cluster machine. You may leave DHCP working for your host machine, or configure it with static address.
 - "**Nat Service**" is explained [here](https://www.virtualbox.org/manual/ch06.html#network_nat_service)
 - If you have completed the [first lab](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/1-infastructure-lab), you should be able to use the VirtualBox command-line interface.
 - Add a new NAT network (I name it **k8s-nat**):  
