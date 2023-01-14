@@ -139,7 +139,8 @@ Notes:
   - ..So retry until you see **Complete!** in all nodes.
   - We are installing a specific version of kubernetes here (we will update it later), so the last option prevents yum from automatically updating it.
 - **kubectl** and **kubeadm** are just commands, but kubelet is a service that has to run, so we enable (and start) it here:  
-**sudo systemctl enable --now kubelet**
+**sudo systemctl enable --now kubelet**  
+(note that kubeadm parameters are still missing, so kubelet will not run correctly before the next command)
 
 ## Initializing the Cluster
 
@@ -148,13 +149,13 @@ Notes:
 Worker nodes are then joined to the cluster.
 When using the **kubeadm** command, you can use **kubeadm reset** to go back if you need to re-type your commands.  
 
-- Init your cluster by typing the following command:  
+- Init your cluster by typing the following command (**on control node only**):  
 **sudo kubeadm init --pod-network-cidr 172.16.0.0/16 --kubernetes-version 1.22.0**
-- Run the following commands in you control node - as a regular user (no sudo):
+- Run the following commands **on you control node only** - as a regular user (no sudo):
   - mkdir -p $HOME/.kube
   - sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
   - sudo chown $(id -u):$(id -g) $HOME/.kube/config
-- Install networking for the cluster:  
+- Install networking for the cluster(again - control node only):  
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 
 ## Join Worker Nodes
@@ -162,6 +163,8 @@ kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 - Run this command on the control node to get the join command for the worker nodes.  
 **(Do not use the join command you see at the end of the init command at the control node!!!)**  
 **kubeadm token create --print-join-command**
-- Run the output command on each worker node(add sudo).
+- Run the output command **on each worker node only** (add sudo).
 - Use **kubectl get nodes** to see the joined nodes.  
 It may take a few minutes until the status of the nodes becomes **Ready**.
+
+(go to [4 - kubectl on you Host](https://github.com/YuvalShaul/k8s/blob/main/infrastructure/cluster/4-configure-kubectl.md))
