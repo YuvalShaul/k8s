@@ -1,4 +1,4 @@
-# 2 - Network Lab
+# 2 - Network
 
 This lab assumes you have completed the [infrastructure-lab](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/A-build/1-infastructure-lab), so that you now have a single machine that will be used as a template.
 It is now the time to create a network, and clone it.
@@ -13,6 +13,9 @@ It is now the time to create a network, and clone it.
 
 ## Configure NAT Networking
 
+Note:  
+I am leaving these instructions **as is**, and they still work, but newer version of VirtualBox have a GUI to help you create NAT Networks (file->tools->network manager)  
+
 - "**Nat Service**" is explained [here](https://www.virtualbox.org/manual/ch06.html#network_nat_service)
 - If you have completed the [first lab](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/1-infastructure-lab), you should be able to use the VirtualBox command-line interface.
 - Add a new NAT network (I name it **k8s-nat**):  
@@ -26,7 +29,7 @@ It is now the time to create a network, and clone it.
 
 ## IP addresses
 
-- Run your single machine
+- Run your single template machine
 - Configure a static IP address:
 - (use **right-ctrl** to exit from the mouse capture of the virtual machine window)
 - Make sure that the machine settings in VirtualBox are correct:
@@ -41,12 +44,12 @@ It is now the time to create a network, and clone it.
     - TYPE=Ethernet
     - BOOTPROTO=static
     - IPADDR=192.168.122.x 
-    (where x is 11,12,13 for k8s-a, k8s-b, k8s-c, 10 for k8s-control, 100 for the host)
+    (x will be later 11,12,13 for k8s-a, k8s-b, k8s-c, and 10 for k8s-control, 100 for the host)
     - PREFIX=24
     - ONBOOT=yes
     - GATEWAY=192.168.122.1
     - DNS1=8.8.8.8
-  - restart your machines
+  - restart the machine
 - If all goes well, you should be able to ping 8.8.8.8
 
 
@@ -71,6 +74,7 @@ It is now the time to create a network, and clone it.
 192.168.122.X, where x is 10(k8s-control), 11(k8s-a), 12(k8s-b), 13(k8s-c)
 - Make sure your new machines can work
 
+
 ## End Results
 
 - You should have:
@@ -94,5 +98,5 @@ To install terminator:
   - **sudo apt-get update**
   - **sudo apt-get install terminator**
 
-(go to [3 - Building a K8S Cluster](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/A-build/3-building-a-cluster))  
+(go to [3 - Building a K8S Cluster](https://github.com/YuvalShaul/k8s/blob/main/infrastructure/cluster/3-building-a-cluster.md))  
 
