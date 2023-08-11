@@ -51,6 +51,8 @@ We get the last item..this is python syntax
 (you should get the node name the pod is running at)
 - Now, let's get nodeName for all pods:  
 **kubectl get pods -o jsonpath='{$.items[*].spec.nodeName}'**  
+- A nice one using the jsonpath range operator (see [here](https://pwittrock.github.io/docs/user-guide/jsonpath/) for more information).  I will show pod/name in a line and uses line breaks:  
+**kubectl get pods -o jsonpath='{range .items[*]} {.metadata.name}{.spec.nodeName}{"\n"}{end}'**
 
 ## sort-by
 
