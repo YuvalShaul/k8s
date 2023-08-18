@@ -1,4 +1,4 @@
-# 24 - DNS
+# Basic DNS
 
 We'll use this lab to demonstrate DNS service within kubernetes.
 
