@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: server-pod
+  namespace: other-ns
+  labels:
+    app: server
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.19.2
+    ports:
+    - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client-pod
+  namespace: other-ns
+  labels:
+    app: client
+spec:
+  containers:
+  - name: busybox
+    image: radial/busyboxplus:curl
+    command:
+      - sleep
+      - "3600"
+  
+

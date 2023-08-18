@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: blocking-all
+  namespace: other-ns
+spec:
+  podSelector:
+    matchLabels:
+      app: server
+  policyTypes:
+  - Ingress
+  - Egress
