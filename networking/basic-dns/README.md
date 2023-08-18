@@ -9,7 +9,7 @@ We'll use this lab to demonstrate DNS service within kubernetes.
 ## View DNS Pods and service
 
 - The DNS Pods are part of the kube-system namespace.  
-Since we have use [**kubeadm**](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/) to create our cluster, we have [**CoreDNS**](https://coredns.io/) as out DNS server.  
+Minikube uses [**CoreDNS**](https://coredns.io/) as out DNS server.  
 View the DNS Pods in your cluster:  
 **kubectl get pods -n kube-system**
 - DNS is exposed internally in k8s as a service:  
