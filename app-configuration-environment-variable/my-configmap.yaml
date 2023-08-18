@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+data:
+  key1: value1
+  key2: value2
+  key3: |
+    key31:
+      - key311: value3
+      - key312: value4
+  key4:  |
+    multi line
+    data can be used
+    based on yaml syntax
+binaryData: 
+  binkey1: aGVsbG8gd29ybGQK
