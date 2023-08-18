@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dns-pod
+spec:
+  dnsPolicy: ClusterFirst
+  containers:
+  - name: net-container
+    image:  nicolaka/netshoot 
+    command:
+    - sleep
+    - "3600"
