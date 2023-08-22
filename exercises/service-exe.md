@@ -13,12 +13,15 @@ You will:
 Create a simple python web application:  
 - Use Flask
 - Your application should serve a single web page.
-- The single web page should identify the replying server hostnme  
-(explore **uname -a** command)
+- The single web page should identify the replying server hostnme or IP address 
 - Example:  
-<h3> Greetings !!! </h3>
-This is your server answering from server-deployment-1-779cc696cf-54p77
-- **Make sure your code is saved in github**
+```
+Greetings !!!
+This is your server answering from pod:
+ server-deployment-1-779cc696cf-54p77
+```
+
+- Make sure your code is saved in github
 
 
 ## Dockerize your server application
