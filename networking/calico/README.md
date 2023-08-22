@@ -2,6 +2,7 @@
 
 We'll use this lab to get a glimpse of the calico networking plugin.
 
+- [Make sure you are running Calico](#Make-sure-you-are-running-Calico)
 - [Create some pods and inspect scheduling](#Create-some-pods-and-inspect-scheduling)
 - [Network Namespaces](#Network-Namespaces)
 - [Show networking inside a pod](#Show-networking-inside-a-pod)
