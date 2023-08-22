@@ -39,16 +39,18 @@ It will also create an [ipip tunnel](https://datatracker.ietf.org/doc/html/rfc20
 ```
 ip address show
 ```
-- Calico configures the node to connect between these namespaces.  
-Use the **ip addess show** (or **ip a sh**) to view the interfaces coming from the pods, and the tunnel connecting them at the node namespace.
 
 ## Show networking inside a pod
 
-- You can exec into a pod, and then use networking commands inside:
-  - **ip a sh**
-  - **tcpdump**  (to see network traffic)
-- You can see the same from the node cli level:
-  - **sudo ip netns exec \<net namespace\>  ip a sh**  
-  Example:  
-sudo ip netns exec cni-03e58a9e-e9b5-b071-20df-968bcd8abc3d  ip a sh
-  - **sudo ip netns exec \<net namespace\>  tcpdump**  
+- You can exec into a pod, and then use networking commands inside.
+- For example, listing pods and then exec to a specific pod:  
+```
+kubectl get pods -p wide | grep 03
+kubectl exec -it net-deployment-5bb5595f8f-9d9p9 -- sh
+```
+and inside the pods, list addresses and watch traffic:  
+```
+ip a sh
+tcpdump
+```
+  
