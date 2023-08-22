@@ -6,7 +6,7 @@ We'll use this lab to demonstrate services.
 - [Create a ClusterIP service](#Create-a-cluster-ip-service)
 - [Use the ClusterIP service](#Use-the-ClusterIP-service)
 - [A NodePort service](#A-NodePort-service)
-
+- [A LoadBalancer service](#A-LoadBalancer-service)
 
 ## Create a deployment
 
