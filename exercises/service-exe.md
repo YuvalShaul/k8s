@@ -27,15 +27,18 @@ This is your server answering from pod:
 ## Dockerize your server application
 
 - Create a Dockerfile (also saved in github)
+- You can store it in the same directory as the python file(s)
 - build and tag your image
 - Try to use your images locally
-- Upload your images to dockerhub
+- Upload your images to dockerhub  
+(you need a dockerhub account for that)
 
 ## Deploy your app to your local minikube kubernetes cluster
 
 - Create the necessary yaml files
-- Files should be part of your github project
+- Create a **deploy** directory in your project to store these files
+- Deployment files should be part of your github project
 - Deploy your code using **kubectl** commands
-- Make sure deployment works even if image is deleted  
-(so image is downloaded from dockerhub)
+- Make sure deployment works even if image is locally deleted, so the image is downloaded from the registry
+
 
