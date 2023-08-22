@@ -25,7 +25,7 @@ kubectl apply -f netpods.yaml
 - Several of these pods will be scheduled to our test node (I'll be using k8s-c).  
 Find how many of those have landed in the testing node:  
 ```
-kubectl get pods -o wide | grep k8s-c | wc -l**
+kubectl get pods -o wide | grep four-m03 | wc -l
 ```
 
 ## Network Namespaces
