@@ -4,7 +4,7 @@ We'll use this lab to get a glimpse of the calico networking plugin.
 
 - [Make sure you are running Calico](#Make-sure-you-are-running-Calico)
 - [Create some pods and inspect scheduling](#Create-some-pods-and-inspect-scheduling)
-- [Network Namespaces](#Network-Namespaces)
+- [Networking Inside Nodes](#Networking-Inside-Nodes)
 - [Show networking inside a pod](#Show-networking-inside-a-pod)
 
 
@@ -28,12 +28,16 @@ Find how many of those have landed in the testing node:
 kubectl get pods -o wide | grep four-m03 | wc -l
 ```
 
-## Network Namespaces
+## Networking Inside Nodes
 
 - We would like to take a look at the networking inside the test node:  
-**ssh osboxes@192.168.122.13**
-- The Calico plugin will create a [networking namespace](https://man7.org/linux/man-pages/man8/ip-netns.8.html) for each pod scheduled to run here:  
-**ip netns list**  (you can ommit the last word)
+```
+minikube ssh -p four -n four-m03
+```
+- The Calico plugin will create an interface for each pod scheduled to run here, and also an [ipip tunnel](#https://datatracker.ietf.org/doc/html/rfc2003) interface to connect local pods to pods in other nodes:  
+```
+ip address show
+```
 - Calico configures the node to connect between these namespaces.  
 Use the **ip addess show** (or **ip a sh**) to view the interfaces coming from the pods, and the tunnel connecting them at the node namespace.
 
