@@ -34,7 +34,8 @@ kubectl get pods -o wide | grep four-m03 | wc -l
 ```
 minikube ssh -p four -n four-m03
 ```
-- The Calico plugin will create an interface for each pod scheduled to run here, and also an [ipip tunnel](#https://datatracker.ietf.org/doc/html/rfc2003) interface to connect local pods to pods in other nodes:  
+- The Calico plugin will create an interface for each pod scheduled to run here.  
+It will also create an [ipip tunnel](#https://datatracker.ietf.org/doc/html/rfc2003) interface to connect local pods to pods in other nodes:  
 ```
 ip address show
 ```
