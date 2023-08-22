@@ -3,7 +3,7 @@
 We'll use this lab to demonstrate services.
 
 - [Create a deployment](#Create-a-deployment)
-- [Create a cluster-ip service](#Create-a-cluster-ip-service)
+- [Create a ClusterIP service](#Create-a-cluster-ip-service)
 - [Use the ClusterIP service](#Use-the-ClusterIP-service)
 - [A NodePort service](#A-NodePort-service)
 
@@ -21,7 +21,7 @@ Apply it:
 **echo "AAAAA" > /usr/share/nginx/html/index.html**
 - Repeat this process with the 2nd and 3rd pods, but use "BBBBB" and "CCCCC" accordingly.
 
-## Create a cluster-ip service
+## Create a ClusterIP service
 
 - Look at the **cluster-ip.yaml** file from this lab.  
 It creates a service of the cluster-ip type.  
