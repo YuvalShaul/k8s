@@ -3,12 +3,12 @@
 We'll use this lab to demonstrate services.
 
 - [Create a deployment](#Create-a-deployment)
-- [Create a cluster-ip service](#Create-a-cluster-ipservice)
+- [Create a cluster-ip service](#Create-a-cluster-ip-service)
 - [Use the ClusterIP service](#Use-the-ClusterIP-service)
 - [A NodePort service](#A-NodePort-service)
 
 
-## Create a deployment-
+## Create a deployment
 
 - Look at **svc-deployment.yaml** from this lab.  
 It contains a deployment that run 3 replicas of an Nginx server.  
