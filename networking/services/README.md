@@ -3,12 +3,12 @@
 We'll use this lab to demonstrate services.
 
 - [Create a deployment](#Create-a-deployment)
-- [Create a service](#Create-a-service)
+- [Create a cluster-ip service](#Create-a-cluster-ipservice)
 - [Use the ClusterIP service](#Use-the-ClusterIP-service)
 - [A NodePort service](#A-NodePort-service)
 
 
-## Create a deployment
+## Create a deployment-
 
 - Look at **svc-deployment.yaml** from this lab.  
 It contains a deployment that run 3 replicas of an Nginx server.  
@@ -21,7 +21,7 @@ Apply it:
 **echo "AAAAA" > /usr/share/nginx/html/index.html**
 - Repeat this process with the 2nd and 3rd pods, but use "BBBBB" and "CCCCC" accordingly.
 
-## Create a service
+## Create a cluster-ip service
 
 - Look at the **cluster-ip.yaml** file from this lab.  
 It creates a service of the cluster-ip type.  
