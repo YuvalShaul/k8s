@@ -2,7 +2,10 @@
 
 In this lab we'll demonstrate the creation a local PersistentVolume, and then consume it using a PersistentVolumeClaim.
 
-- [Create persistent volumes](#Create-persistent-volumes)
+- [Create a local persistent volumes](#Create-a-local-persistent-volumes)
+- [Bound the local PV to a PVC](#Bound-the-local-PV-to-a-PVC)
+- [Use the volume in a pod](#Use-the-volume-in-a-pod)
+- [Testing the local volume](#Testing-the-local-volume)
 
 ## Create a local persistent volumes
 
