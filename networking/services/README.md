@@ -64,4 +64,7 @@ This will create a NodePort type service that will be accessible from outside th
 (change to your profile name)
 - In the other screen, apply the load balancer service:  
 **kubectl apply -f load-balancer.yaml**
-
+- When you are done, look for the route that the tunnel was adding like this:  
+```
+ip route
+```
