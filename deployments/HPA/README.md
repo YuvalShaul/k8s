@@ -9,8 +9,14 @@ In this lab we are going to demonstrate [Horizontal Pod Autoscaling](https://kub
 ## Metrics Server
 
 - The [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server#kubernetes-metrics-server) is an addon to kubernetes needed for resource monitoring.
-- We have already described the installation of this server in [lab-11](https://github.com/YuvalShaul/kubernetes/tree/main/labs/k8s-VirtualBox/C-objects/11-resources)
-- Verify you have it installed.
+- Use the following command to see if it is enabled (replace **five** with your profile name:
+```
+minikube addons list  -p five  | grep metrics
+```
+- If it is not enabled, go ahead and enable it:
+```
+minikube addons enable metrics-server -p five
+```
 
 ## Apply a simple deployment
 
