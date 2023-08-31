@@ -1,4 +1,4 @@
-# 235 - Custom Resource Definitions 
+# Custom Resource Definitions 
 
 In this lab we are going to create and use a CustomResourceDefinitions (CRD) resource.  
 We will not demonstrate how to add a controller to it here.  
