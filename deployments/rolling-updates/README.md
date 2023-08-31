@@ -27,12 +27,18 @@ kubectl get rs
 
 - Edit the deployment configuration file and change the image version to nginx:1.19.2  
 - Apply:
-**kubectl apply -f my-deployment.yaml --record=true**  
+```
+kubectl apply -f my-deployment.yaml --record=true
+```
 - Try to follow the deployment process by using the command:  
-**kubectl get rs**  
+```
+kubectl get rs
+```
 (this is because the rollout is done by a new ReplicaSet that is created.)
 - Once the new ReplicaSet is the only one running pods, verify the status of the rollout:  
-**kubectl rollout status deployment/my-deployment**
+```
+kubectl rollout status deployment/my-deployment**
+```
 
 ## Rollout a bad change
 
