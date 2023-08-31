@@ -52,7 +52,7 @@ kubectl rollout status deployment/my-deployment
 (use ctrl-c to stop this command)
 - Notice that the 2nd rollout we have done is still working, there are 3 pods running it:  
 ```
-kubectl get pods**
+kubectl get pods
 ```
 
 ## Rollback
