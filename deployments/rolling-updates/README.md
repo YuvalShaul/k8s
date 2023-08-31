@@ -45,19 +45,28 @@ kubectl rollout status deployment/my-deployment**
 - Create a new rollout by changing the image name to "badimage"  
 (again, change the configuration file and apply with a --record option)
 - Try to see the status chage of the ReplicaStes
-- Check the status of the rollout:  
-**kubectl rollout status deployment/my-deployment**  
+- Check the status of the rollout:
+```
+kubectl rollout status deployment/my-deployment**  
+```
 (use ctrl-c to stop this command)
 - Notice that the 2nd rollout we have done is still working, there are 3 pods running it:  
-**kubectl get pods**
+```
+kubectl get pods**
+```
 
 ## Rollback
 
 - See the details of the revision you want to rollback to:  
-**kubectl rollout history deployment/my-deployment --revision=2**
+```
+kubectl rollout history deployment/my-deployment --revision=2**
+```
 - Roolbak to revision 1:  
-**kubectl rollout undo deployment/my-deployment --to-revision=1**
+```
+kubectl rollout undo deployment/my-deployment --to-revision=1**
+```
 - Use this command to see that the correct ReplicaSet is being used:  
-**kubectl get rs**
-
+```
+kubectl get rs**
+```
 
