@@ -1,4 +1,4 @@
-# 22 - Deployments Overview
+# Deployments Overview
 
 Use this lab we'll demonstrate the creation of deployments.
 
