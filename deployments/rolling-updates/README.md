@@ -20,7 +20,7 @@ kubectl get pods
 ```
 - View the ReplicaSet objects that were created:
 ```
-**kubectl get rs**
+kubectl get rs
 ```
 
 ## Rollout a good change
