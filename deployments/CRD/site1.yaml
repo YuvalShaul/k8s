@@ -1,0 +1,7 @@
+apiVersion: yuval.stable.example/v1  # <group name> / <version>
+kind: WebSite                        # from the CRD definition
+metadata:
+  name: site-one
+spec:
+  sitename: site-one
+  replicas: 5
