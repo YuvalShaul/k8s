@@ -9,13 +9,19 @@ Use this lab we'll demonstrate using rolling updates with k8s Deployments.
 
 ## Create a dployment
 
-- Use the **my-deployment.yaml** file from this lab to create a new deployment:  
-**kubectl apply -f my-deployment.yaml --record=true**
-- Verify that the Deployment and the pods were created:  
-**kubectl get deployments**  
-**kubectl get pods**
-- View the ReplicaSet objects that were created:  
+- Use the **my-deployment.yaml** file from this lab to create a new deployment:
+```
+kubectl apply -f my-deployment.yaml --record=true
+```
+- Verify that the Deployment and the pods were created:
+```
+kubectl get deployments
+kubectl get pods
+```
+- View the ReplicaSet objects that were created:
+```
 **kubectl get rs**
+```
 
 ## Rollout a good change
 
