@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydep
+spec:
+  selector:
+    matchLabels:
+      app: mydep
+  template:
+    metadata:
+      labels:
+        app: mydep
+    spec:
+      containers:
+      - name: mydep-a
+        image:  radial/busyboxplus:curl
+        command:
+        - sleep
+        - "3600"
+        resources:
+          requests:
+            cpu: "100m"
