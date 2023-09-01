@@ -22,10 +22,14 @@ minikube addons enable metrics-server -p five
 
 - Look at **mydep.yaml** file from this lab.
 - Note that there is no **replicas** definition present.
-- Apply it:  
-**kubectl apply -f mydep.yaml**
+- Apply it:
+```
+kubectl apply -f mydep.yaml
+```
 - Verify by looking at the single pod created:  
-**kubectl get pods**
+```
+kubectl get pods
+```
 
 ## Create you autoscaler
 
@@ -34,10 +38,14 @@ minikube addons enable metrics-server -p five
   - It targets the **mydep** deployment you have just created
   - It scales you replicase between 1 and 3
   - It'l spin-up more replicas if CPU utilization goes above 60%
-- Create the autoscaler:  
-**kubectl apply -f HPA.yaml**
+- Create the autoscaler:
+```
+kubectl apply -f HPA.yaml**
+```
 - You can verify the creation:  
-**kubectl get hpa**
+```
+kubectl get hpa**
+```
 
 ## Try it
 
