@@ -42,7 +42,9 @@ minikube addons enable metrics-server -p five
 ## Try it
 
 - To create a load, split your Terminator screen, and exec into your pod:  
-**kubectl exec -it my-pod -- sh**
+```
+kubectl exec -it \<pod name\> -- sh
+```
 - Create some load in your pod by running the following command:  
 **for i in 1 2 3 4; do while : ; do : ; done & done**  
 It will create 4 loops. Each loop is running the null ( **:** ) command.  
