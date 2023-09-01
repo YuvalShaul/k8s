@@ -4,7 +4,6 @@ metadata:
   name: pv-claim
 spec:
   storageClassName: local-sc
-  volumeName: local-pv-b
   accessModes:
     - ReadWriteOnce
   resources:
