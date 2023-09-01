@@ -54,11 +54,16 @@ kubectl get hpa**
 kubectl exec -it \<pod name\> -- sh
 ```
 - Create some load in your pod by running the following command:  
-**for i in 1 2 3 4; do while : ; do : ; done & done**  
+```
+for i in 1 2 3 4; do while : ; do : ; done & done
+```
 It will create 4 loops. Each loop is running the null ( **:** ) command.  
 Each loop runs in its own process (Use **ps** to see that).  
 Each process can create a load of 100% for a single virtual cpu.  
--  Use **kubectl top pods my-pod** to see what's going on.  
+-  Use the following command to see what's going on:
+```
+kubectl top pods my-pod
+```
 You may have to wait for several minutes to see how the load builds up.
 - After some minutes, you'll begin to see more pods (up to 3) from this deployment.
 - Decrease the load by killing shell processes in your pod.  
