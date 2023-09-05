@@ -9,13 +9,15 @@ In this project you will create a WEB API made of 2 services and deploy it to ku
 ## General project description
 
 - You will be creating a WEB API about books and authors.
-- Here are some examples of using it:
-  - get /
+- These are the minimum results that are supposed to be supported:
+  - get /  
      returns a short intro message
   - get /author/Dan
+        (Dan is an example of an author)  
         will return a record with Dans description + list of all book names written by Dan
         (or an error message if ther is author by that name)
-  - get /book/the_wind_in_the_wollow 
+  - get /book/the_wind_in_the_wollow  
+        (the_wind_in_the_wollow is an example of a book name)
         will return BOOK details (with author inside it)
         (or an error message if there is no such book)
 
@@ -31,4 +33,4 @@ You should design the internal structore of this file.
 - Each program should be packed inside a single docker image
 - Each images should be uploaded to its own repository (inside the same account) in dockerhub
 - Each program will be run inside kubernetes in its own ClusterIP service, over more than a single pod
-- Use an ingress to create a single API from these two services.
+- Use a kubernetes ingress to create a single API from these two services.
