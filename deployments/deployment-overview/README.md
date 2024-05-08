@@ -37,7 +37,7 @@ Change **replicas** to 19, save and exit.
 
 ## Scale by using the kubectl scale command
 
-- Scale doen:  
+- Scale down:  
 ```
 kubectl scale deployment.v1.apps/my-deployment --replicas=2
 ```
