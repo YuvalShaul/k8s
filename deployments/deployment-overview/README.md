@@ -1,3 +1,5 @@
+(learn more about k8s deployment [here](http://localhost:1313/k8s/deployments/deployment-basics/))
+
 # Deployments Overview
 
 Use this lab we'll demonstrate the creation of deployments.
