@@ -24,6 +24,8 @@ Use static IP addresses for the cluster machine. You may leave DHCP working for 
 - Later on, if your nat network stops working, you can start it again by typing:  
 **VBoxManage natnetwork stop  --netname k8s-nat**  
 **VBoxManage natnetwork start --netname k8s-nat**
+- You can see your network status like this:  
+**VBoxManage natnetwork list**
 - Now, in your template machine, right-click -> settings, choose **Network**,  and select "NAT Network" from the drop-down list. Make sure that the correct NAT network appears in "Name".
 - Open the "Advanced" option there, and make sure that the "Cable Connected" is checked.
 - Restart the machine, or power it on.
