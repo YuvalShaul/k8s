@@ -1,6 +1,7 @@
 # Many PODS Lab
 
-Use this lab to get some hands-on experience with kubectl commands.
+Use this lab to get some hands-on experience with kubectl commands.  
+More info in [Jsonpath With Objects](http://localhost:1313/k8s/objects/jsonpath-with-objects/)
 
 - [preparations](#preparations)
 - [experiment with kubectl](#experiment-with-kubectl)
