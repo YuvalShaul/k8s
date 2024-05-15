@@ -1,3 +1,5 @@
+(see a post covering this material [here](https://www.yuval.guide/k8s/objects/labels-and-selectors/))
+
 # Labels and Selectors
 
 In this lab we are going to experience the use of labels and selectors.
