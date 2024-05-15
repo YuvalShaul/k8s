@@ -1,3 +1,4 @@
+(see a post covering this material [here](https://www.yuval.guide/k8s/objects/app-configuration/))
 # Application Configuration
 
 In this lab we are going to use a configmap.
