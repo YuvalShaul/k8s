@@ -1,3 +1,5 @@
+(see a post covering this material [here](https://www.yuval.guide/k8s/resources/inspecting-resources/))
+
 # Resources - Inspecting
 
 In this lab we are going to inspect resources used by a pod.
