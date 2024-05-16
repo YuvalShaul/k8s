@@ -1,6 +1,6 @@
 # HPA - Horizontal Pod Autoscaling 
 
-In this lab we are going to demonstrate [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)  
+See post about HPA [here](https://www.yuval.guide/k8s/deployments/horizontal-pod-autoscaler/) 
 
 - [Metrics Server](#Metrics-Server)
 - [Apply a simple deployment](#Apply-a-simple-deployment)
