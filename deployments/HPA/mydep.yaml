@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: mydep-a
-        image:  radial/busyboxplus:curl
+        image:  yuvalshaul/alpine:curl
         command:
         - sleep
         - "3600"
