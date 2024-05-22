@@ -6,5 +6,5 @@ spec:
   restartPolicy: OnFailure
   containers:
   - name: busybox
-    image: k8s.gcr.io/busybox
+    image: busybox
     command: ['sh', '-c', 'sleep 10']
