@@ -6,7 +6,7 @@ metadata:
     app: client
 spec:
   containers:
-  - name: busybox
+  - name: alpine
     image: alpine:latest
     command:
       - sleep
