@@ -1,4 +1,4 @@
-# 15 - Monitoring container health with probes
+# Monitoring container health with probes
 
 In this lab we are going to demonstrate using probes to monitor containers health.
 
