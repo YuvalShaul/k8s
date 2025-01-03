@@ -15,7 +15,7 @@ After creating your cluster (using **kubeadm**) you'll have this file:
 This file is an exact copy of the **~/.kube/config**  config file you are using with your kubectl commands.
 
 - Open a terminal to your control node:  
-**ssh osboxes@192.168.122.10**
+**minikube ssh -n <node name> -p <profile name.**
 - Edit the file (use sudo) and copy the **client-certificate-data** part of this file.  
 Make sure you copy just the base64 part, nothing else.
 - Paste this into a new file called cert64
