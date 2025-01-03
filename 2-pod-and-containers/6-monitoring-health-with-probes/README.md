@@ -2,7 +2,6 @@
 
 In this lab we are going to demonstrate using probes to monitor containers health.
 
-- [Liveness pod](#Liveness-pod)
 
 ## Liveness pod
 
