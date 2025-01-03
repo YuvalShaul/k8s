@@ -1,4 +1,4 @@
-# 8 - Users
+# Kubernetes Users
 
 Use this lab to learn about k8s **normal** users.  
 Use [this link](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) to read a little about users in kubernetes.
