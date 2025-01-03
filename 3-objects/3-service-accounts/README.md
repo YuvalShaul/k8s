@@ -19,6 +19,10 @@ It describes a service account object with the name **my-sa**.
 - Use this command to see the token set by the service account:  
 **kubectl describe sa my-sa**  
 (search for the line starting with **Mountable secrets:**)
+- If it is not there (newer version of kubernetes) you can create a token using the API:  
+```
+kubectl create token my-sa
+```
 - This token is a [JWT (Json Web Token)](https://en.wikipedia.org/wiki/JSON_Web_Token), that includes several fields.  
 We can get the actual data of the secret by using this command:  
 **kubectl describe secret \<secret mountable token name\>**
