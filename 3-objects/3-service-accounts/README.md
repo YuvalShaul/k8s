@@ -1,4 +1,4 @@
-# 10 - Service Accounts
+# Service Accounts
 
 In this lab we are going to create service accounts.
 
