@@ -23,4 +23,7 @@ spec:
             - fine
   containers:
   - name: affinity-pod-1
-    image: k8s.gcr.io/pause:2.0
+    image: busybox:latest
+    command:
+    - sleep
+    - "3600"
