@@ -3,13 +3,13 @@
 
 
 Phase A
-1. Create a directory for an application (in your host)
-2. Create a python virtual environment in it
-3. Activate the local environment
-4. Install flask
+1. Create a directory for an application (in your host).
+2. Create a python virtual environment in it.
+3. Activate the local environment.
+4. Install flask using pip
 5. Create a simple flask application (that listens to all ip addresses)
-6. Create a requirements.txt file
-7. Test you app locally 
+6. Create a requirements.txt file (pip freeze)
+7. Test you app locally (use curl or a browser)
 
 Phase B
 
@@ -26,10 +26,10 @@ Phase C
 
 Phase D  
 
-14. Create a pod that refers to your image, and run it  
+14. Create a pod that refers to your image, and runs it.  
     It should create a pod that will use your image.  
 15. Create another pod to be able to connect to your application pod:  
-    - Use flask
+    - Use alpine
     - apk update
     - apk add curl
-16. Test that your app pod returns a correct answer
+16. Test (using curl) that your app pod returns a correct answer.
