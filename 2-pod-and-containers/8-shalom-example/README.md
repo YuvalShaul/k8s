@@ -1,5 +1,9 @@
 
-
+### Build your image
+- When you Dockerfile is good, run a build command:
+```
+docker build -t <your dockerhub username>/<repositorynamt>:<tag>
+```
 
 ### Usefull commands
 
