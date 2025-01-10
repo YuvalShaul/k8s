@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shalom-pod
+spec:
+  containers:
+  - name: shalom-cont-1
+    image: yuvalshaul/shalom:two
+    ports:
+    - containerPort: 5000
