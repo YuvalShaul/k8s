@@ -18,15 +18,17 @@ Phase B
 10. Run a local container from you image and test app again
    (don't forget to map ports correctly..)
 
-Phase C
+Phase C  
+
 11. Create a personal repository in dockerhub
 12. Push you image there
 13. Delete all local images, and run container from remote registry
 
-Phase D
-14. Create a pod that refers to your image, and run it
-    It should create a pod that will use your image.
-15. Create another pod to be able to connect to your application pod:
+Phase D  
+
+14. Create a pod that refers to your image, and run it  
+    It should create a pod that will use your image.  
+15. Create another pod to be able to connect to your application pod:  
     - Use flask
     - apk update
     - apk add curl
