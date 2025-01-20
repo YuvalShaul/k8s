@@ -40,11 +40,11 @@ kubectl get pods
   - It'l spin-up more replicas if CPU utilization goes above 60%
 - Create the autoscaler:
 ```
-kubectl apply -f HPA.yaml**
+kubectl apply -f HPA.yaml
 ```
 - You can verify the creation:  
 ```
-kubectl get hpa**
+kubectl get hpa
 ```
 
 ## Try it
