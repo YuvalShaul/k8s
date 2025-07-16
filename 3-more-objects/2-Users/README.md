@@ -41,14 +41,16 @@ After creating your cluster (using **minikube start** command) you'll have:
 ## Create a new user certificates
 
 - First, we need to get the root certificate and key for our Kubernetes clusters.  
-Since the private key (ca.key) should not be moved outsite of the control node, we can do the whole thing in the control node, in the pki directory.
+Since the private key (ca.key) should not be moved outsite of the control node, we can do the whole thing in the control node, in the certs directory.
 - Use the following commands at the control node:
+  - ssh -p <cluster-name> -n <control node name>  
+  example:  **ssh -p four -n four**
   - **sudo su**
-  - **cd /etc/kubernetes/pki**
+  - **/var/lib/minikube/certs/**
   - Looking at this directory I can find:
     - **ca.crt** (the Certificate Authority certificate/public key)
     - **ca.key** (the ca private key)
-  - I'm going to create the user 'dave'.  
+  - I'm going to create the new user 'dave'.  
   Create a directory called "dave" and cd into it. Also copy ca files into it:  
     - **mkdir dave**
     - **cd dave**
@@ -68,9 +70,9 @@ Since the private key (ca.key) should not be moved outsite of the control node, 
   **chmod 777 dave.\***
   - Go into my host computer, and copy the files:
     - **cd ~/.kube**  
-    - **scp osboxes@192.168.122.10:/etc/kubernetes/pki/dave/dave.crt .**
-    - **sudo scp osboxes@192.168.122.10:/etc/kubernetes/pki/dave/dave.key .**
-    - **scp osboxes@192.168.122.10:/etc/kubernetes/pki/ca.crt .**
+    - minikube cp  four:/tmp/dave.crt  /home/osboxes/.kube/ca.crt  -p four
+    minikube cp  four:/tmp/dave.key  /home/osboxes/.kube/ca.crt  -p four
+    minikube cp  four:/tmp/ca.crt  /home/osboxes/.kube/ca.crt  -p four
   - Change file permissions:  
     - **chmod 000 dave.key**
     - **chmod 644 dave.crt**
