@@ -10,22 +10,32 @@ Use [this link](https://kubernetes.io/docs/reference/access-authn-authz/authenti
 
 ## Reading the admin user name
 
-After creating your cluster (using **kubeadm**) you'll have this file:  
-**/etc/kubernetes/admin.conf** just on your control node(s).  
-This file is an exact copy of the **~/.kube/config**  config file you are using with your kubectl commands.
+After creating your cluster (using **minikube start** command) you'll have:
+- **PRIVATE KEY ONLY IN THE USER SIDE**:
+  - **ca.key** a private key used by the admin user. 
+  - It proves the identity of the user, so it is always in the user side - never in the cluster
+  - look for it under ~/.minikube on your host running minikube
+- **CERTIFICATE** in the client side based on this key which is public:
+  - **ca.crt** file 
+  - **ca.pem** same as ca.crt but a different format
+  - This one should have a copy in the cluster, so that the cluster can authenticate the user.
+  - The kubectl tool knows how to use it because **minikube start** command also updates this into ~/kube/config, so that kubectl tool uses it.
+  - Use: **kubectl config view** to see this (scroll to the end)
+- **CERTIFICATE** in the cluster
+  - The same certificate (same public key **ca.crt**) can be found in the cluster in 
+**/etc/kubernetes/admin.conf** (in the control node)
+  - This file is an exact copy of the **~/.kube/config**  config file you are using with your kubectl commands.
+  - This is how you can see it:
+    - Open a terminal to your control node:  
+    **minikube ssh -n \<node name\> -p \<profile name\>**
+    - View the file:
+    **vi  /etc/kubernetes/admin.conf** (you may need to run this with sudo)
 
-- Open a terminal to your control node:  
-**minikube ssh -n \<node name\> -p \<profile name\>**
-- Edit the file (use sudo) and copy the **client-certificate-data** part of this file.  
-Make sure you copy just the base64 part, nothing else.
-- Paste this into a new file called cert64
-- Use the base64 tool to convert it:  
-**base64 -d cert64 > cert-text**
-- Now use **openssl** to read the certificate:  
-**openssl x509 -in cert-text  -noout -text**
-- The user name is taken from the **Subject** field:  
-**Subject: O = system:masters, CN = kubernetes-admin**  
-so the **CN (Common Name)** is used by kubernetes as the user name.
+- Let's read the details inside the certificate:
+  - Use the following command on your client side:  
+  **openssl x509 -in .minikube/ca.crt -text -noout**
+  - The subject CN is the "user name"
+
 
 
 ## Create a new user certificates
