@@ -8,34 +8,27 @@ Use [this link](https://kubernetes.io/docs/reference/access-authn-authz/authenti
 - [Create a config file for dave](#Create-a-config-file-for-dave)
 - [Use the new config file](#Use-the-new-config-file)
 
-## Reading the admin user name
+## Reading the current user name
 
 After creating your cluster (using **minikube start** command) you'll have:
-- **PRIVATE KEY ONLY IN THE USER SIDE**:
-  - **ca.key** a private key used by the admin user. 
-  - It proves the identity of the user, so it is always in the user side - never in the cluster
-  - look for it under ~/.minikube on your host running minikube
-- **CERTIFICATE** in the client side based on this key which is public:
-  - **ca.crt** file 
+- **CA (certificate authority) files**:
+  - **ca.key** a private key used by the cluster certification authority.
+  - **ca.crt** file, the signed public key for the CA (self signed)
   - **ca.pem** same as ca.crt but a different format
-  - This one should have a copy in the cluster, so that the cluster can authenticate the user.
-  - The kubectl tool knows how to use it because **minikube start** command also updates this into ~/kube/config, so that kubectl tool uses it.
+  - look for those under ~/.minikube on your host running minikube
+- **Current User files** 
   - Use: **kubectl config view** to see this (scroll to the end)
-- **CERTIFICATE** in the cluster
-  - The same certificate (same public key **ca.crt**) can be found in the cluster in 
-**/etc/kubernetes/admin.conf** (in the control node)
-  - This file is an exact copy of the **~/.kube/config**  config file you are using with your kubectl commands.
-  - This is how you can see it:
-    - Open a terminal to your control node:  
-    **minikube ssh -n \<node name\> -p \<profile name\>**
-    - View the file:
-    **vi  /etc/kubernetes/admin.conf** (you may need to run this with sudo)
-
-- Let's read the details inside the certificate:
-  - Use the following command on your client side:  
-  **openssl x509 -in .minikube/ca.crt -text -noout**
-  - The subject CN is the "user name"
-
+  - Generally this is: 
+    - client.crt
+    - client.key
+    - These are ~/.minikube/profiles/<profile>
+  - You can read the use name with:
+    - **openssl x509 -in ~/.minikube/profiles/<profile>/client.crt -text -noout**  
+    (and look for the CN)
+    or with
+    kubectl auth whoami
+    - In my case it was: **minikube-user**
+  - In the cluster (control-plane node) these are stored in /etc/kubernetes/admin.conf with blended with other users.
 
 
 ## Create a new user certificates
