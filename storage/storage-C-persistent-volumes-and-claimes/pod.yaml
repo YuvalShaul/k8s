@@ -9,7 +9,7 @@ spec:
         claimName: pv-claim
   containers:
     - name: busybox-a
-      image: radial/busyboxplus:curl
+      image: alpine/curl:latest
       command:
       - sleep
       - "3600"
