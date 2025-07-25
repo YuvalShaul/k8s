@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: busybox-a
-    image: radial/busyboxplus:curl
+    image: alpine/curl:latest
     command:
     - sleep
     - "3600"
@@ -13,7 +13,7 @@ spec:
     - name: common-volume
       mountPath: /output-a
   - name: busybox-b
-    image: radial/busyboxplus:curl
+    image: alpine/curl:latest
     command:
       - sleep
       - "3600"
