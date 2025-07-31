@@ -20,6 +20,10 @@
   - Select ONLY PRIVATE SUBNETS
   - hot next
 - review and create
-  - This may take several minutes
+  - This may take several minutes (5-15 minutes!!!)
+  - Just remember that eks has to install each node components:
+    - kubelet, containerd, kube-proxy...
+    - join the cluster
+    - run health checks...
 
 
