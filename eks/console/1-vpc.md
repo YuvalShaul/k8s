@@ -5,8 +5,10 @@
 - Create a VPC with CIDR 10.0.0.0/16
 - Create and attach an Internet Gateway (IGW)
 - Make sure you have 2 routing tables: 
-  - one public (you can use the default RT for this one)
-  - one private
+  - one public
+    - use the default RT for this one
+    - edit its name to **publicRT**
+  - one private (call it **privateRT**)
 - Create 2 public subnets in different AZs
   - name: pub1  AZ: us-east-1a IP: 10.0.1.0/24
   - name: pub2  AZ: us-east-1b IP: 10.0.2.0/24
