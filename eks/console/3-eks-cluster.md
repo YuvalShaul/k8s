@@ -1,30 +1,33 @@
 ## Step 3: Creating the EKS cluster
 
-#### Configure cluster
-- Go to EKS console
-- Select **Custom configuration**
-- for name use: **myEKS**
-- Select the cluster service role you created
-- Leave everythine else in this page to its defaults
-- hit next
+### This is what you should be configuring
 
-#### Specify networking
+- Click on **Create cluster**
+- **Configure cluster**
+  - Select **Custom configuration** (this is not the default!!!)
+  - disable **EKS Auto Mode**
+  - name: **myEKS**
+  - Select the cluster IAM role you created  
+  You may see several other policies that aws would like you to add - but you can add these to the role later when needed.
+  - hit next
+- **Specify networking**
+  - Choose your VPC
+  - Add ALL subnets (both public and private)
+  - **DO NOT CHOOSE THE DEFAULT VPC Security Group, LET EKS CRETAE ONE FOR YOU**  
+  **SO LEAVE THIS EMPTY**
+  - hit next
+- **Metrics**
+  - hit next
+- **Select add-ons**
+  - hit next
+- **Configure selected add-ons settings**
+  - hit next
+- **Review and create**
+  - hit **Create**
 
-- Choose your VPC and subnets (both public and private)
-- **DO NOT CHOOSE THE DEFAULT VPC Security Group, LET EKS CRETAE ONE FOR YOU**
-- Cluster endpoint access:  
-Choose pulic and private, so that you can connect to the cluster (kubectl) from your laptop
-- hit next
-- Skip Metrics and Control Plane logs and hit next
+### Cluster creation
 
-#### Select Add-Ons
-
-- Leave everything as it is
-- hit next
-- Don't configure anything in the **Configure selected add-ons settings**
-- hit next
-- Review and create - hit on create
 - This could take several minutes (10-15)
 - **Wait for this to complete !!!**  
-**Do not create node groups yet!!!**
+- **Do not create node groups yet!!!**
 
