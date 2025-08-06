@@ -4,19 +4,21 @@
 
 - Create a VPC with CIDR 10.0.0.0/16
 - Create and attach an Internet Gateway (IGW)
-- Make sure you have 2 routing tables: one public, one private  
-(you can use the default RT as one of these)
+- Make sure you have 2 routing tables: 
+  - one public (you can use the default RT for this one)
+  - one private
 - Create 2 public subnets in different AZs
   - name: pub1  AZ: us-east-1a IP: 10.0.1.0/24
   - name: pub2  AZ: us-east-1b IP: 10.0.2.0/24
   - Attach public RT to both
   - After creation, edit subnet settings and make sure IPv4 auto assign of public ip addresses is on.
+  - Edit the public route table to add a default route that points to the IGW
 - Create 2 private subnets:
   - name: priv1  AZ: us-east-1a IP: 10.0.3.0/24
   - name: priv2  AZ: us-east-1b IP: 10.0.4.0/24
   - Attach private RT to both
-- Nat-GW:
-  - Create a Nat-GW in subnet pub1
+  - Create a Nat-GW in subnet pub1:
+    - during creation you should create a new elastic ip address (EIP) for it  
   - Add a default route to the private RT that points to this Nat-GW
 
 
