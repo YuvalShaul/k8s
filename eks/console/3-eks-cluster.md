@@ -9,6 +9,7 @@
   - name: **myEKS**
   - Select the cluster IAM role you created  
   You may see several other policies that aws would like you to add - but you can add these to the role later when needed.
+  - Choose Kubernetes version 1.32 (we had some problems with 1.33)
   - hit next
 - **Specify networking**
   - Choose your VPC
