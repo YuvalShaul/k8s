@@ -1,8 +1,8 @@
 ## Running EKS using Terraform
 
 ### Introduction
-- This is a configuration to run a complete simple EKS cluster
-- A vpc module call creates:
+- This is a configuration that will create a complete, simple, EKS cluster.
+- A [TF vpc module](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest) call creates:
   - A VPC with:
     - Internet Gateway (IGW)
     - 3 routing tables:
@@ -14,7 +14,7 @@
     - a Nat-GW in pub1
     - 2 private subnet
       - (we add a default route to the private RT, pointing to the Nat-GW)
-- An eks module call creates: 
+- A [TF eks module](https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest) call creates: 
   - 2 IAM roles:
     - EKS Cluster Service Role (the name is not mandatory), with the following aws managed IAM policy:
       - AmazonEKSClusterPolicy 
