@@ -45,7 +45,7 @@ ip address show
 - You can exec into a pod, and then use networking commands inside.
 - For example, listing pods and then exec to a specific pod:  
 ```
-kubectl get pods -p wide | grep 03
+kubectl get pods -o wide | grep 03
 kubectl exec -it net-deployment-5bb5595f8f-9d9p9 -- sh
 ```
 and inside the pods, list addresses and watch traffic:  
