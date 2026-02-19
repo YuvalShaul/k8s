@@ -10,7 +10,7 @@ In this lab we'll demonstrate the creation a local PersistentVolume, and then co
 ## Create a local persistent volumes
 
 - Look at the **local-pv.yaml** file from this lab.  
-I includes an affiny part, that direct the local PV to be created on node four-m02.
+I includes an affiny part, that direct the local PV to be created on node four-m03.
 - Apply the file, and then verify that your local PV was created:  
 **kubectl get pv**
 
