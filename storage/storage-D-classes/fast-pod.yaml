@@ -9,7 +9,7 @@ spec:
         claimName: pv-claim-fast
   containers:
     - name: busybox-a
-      image: radial/busyboxplus:curl
+      image: alpine:latest
       command:
       - sleep
       - "3600"
