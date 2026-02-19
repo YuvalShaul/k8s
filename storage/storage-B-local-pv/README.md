@@ -31,9 +31,9 @@ Then it will mount that volume in the pod file system.
 ## Testing the local volume
 
 - You can get to the same place in two ways:
-  - Login into five-m03, and cd to the local volume directory  
+  - Login into four-m03, and cd to the local volume directory  
   ```
-  minikube ssh -p five -n five-m03
+  minikube ssh -p four -n four-m03
   ```
   - Exec into the pod and go to the directory where it is mounted.
 - Create a file using one way, and observe your file from the other way.
