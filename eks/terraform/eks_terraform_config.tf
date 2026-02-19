@@ -71,7 +71,7 @@ resource "aws_eks_access_policy_association" "admins" {
       
       min_size     = 0
       max_size     = 2  
-      desired_size = 1
+      desired_size = var.desired_nodes
 
       disk_size = 20
     }

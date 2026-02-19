@@ -17,3 +17,10 @@ variable "admin_users" {
   description = "List of IAM user ARNs to grant admin access to the EKS cluster"
   default     = []
 }
+
+variable "desired_nodes" {
+  type        = int
+  description = "The number of desired node to run in the cluster"
+  default     = 2
+}
+
