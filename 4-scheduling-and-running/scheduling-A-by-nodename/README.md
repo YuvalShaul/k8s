@@ -29,5 +29,5 @@ This is because there is a [taint](https://kubernetes.io/docs/concepts/schedulin
 - Apply the file again.  
 Verify that the pod is running on the control node.
 - Cool !!!
-- Don't remember to delete the pod when you're done.
+- Don't forget to delete the pod when you're done.
 
