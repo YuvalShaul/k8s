@@ -3,6 +3,7 @@
 Use this lab to learn about k8s **normal** users.  
 Use [this link](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) to read a little about users in kubernetes.
 
+- [Intro to Kubernetes Users](#Intro-to-Kubernetes-Users)
 - [Reading the admin user name](#Reading-the-admin-user-name)
 - [Create a new user certificates](#Create-a-new-user-certificates)
 - [Create a config file for dave](#Create-a-config-file-for-dave)
