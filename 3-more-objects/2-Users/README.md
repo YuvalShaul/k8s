@@ -32,7 +32,7 @@ After creating your cluster (using **minikube start** command) you'll have:
     - client.key
     - These are ~/.minikube/profiles/<profile>
   - You can read the use name with:
-    - **openssl x509 -in ~/.minikube/profiles/<profile>/client.crt -text -noout**  
+    - **openssl x509 -in ~/.minikube/profiles/\<profile\>/client.crt -text -noout**  
     (and look for the CN)
     or with
     kubectl auth whoami
