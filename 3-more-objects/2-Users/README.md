@@ -8,6 +8,14 @@ Use [this link](https://kubernetes.io/docs/reference/access-authn-authz/authenti
 - [Create a config file for dave](#Create-a-config-file-for-dave)
 - [Use the new config file](#Use-the-new-config-file)
 
+## Intro to Kubernetes Users
+
+- In Kunernetes, **normal users** almost always use X.509 certificates.
+- Note that kubernetes does not have a "User" object. 
+- Instead:
+**Kubernetes trusts anyone who shows up with a certificate signed by the cluster’s Certificate Authority (CA).**
+
+
 ## Reading the current user name
 
 After creating your cluster (using **minikube start** command) you'll have:
