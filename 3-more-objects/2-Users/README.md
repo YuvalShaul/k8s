@@ -36,6 +36,14 @@ After creating your cluster (using **minikube start** command) you'll have:
     (and look for the CN)
     or with
     kubectl auth whoami
+  - Command parameters:
+
+| Parameter | Purpose |  
+| :--------- | :----------- |  
+| x509 | Tells OpenSSL to use the display and utility tool for X.509 certificates (the standard format for public key certificates).|  
+|-in <path> | "Specifies the input file. In this case, you are pointing to the specific certificate Minikube generated for your local kubectl client."|
+|-text |"Translates the certificate from ""computer-speak"" (DER/Base64) into human-readable text. Without this, you’d just see a wall of random characters."|
+|-noout | Prevents the command from printing the encoded version of the certificate at the end. It keeps your terminal clean so you only see the decoded text.|
     - In my case it was: **minikube-user**
   - In the cluster (control-plane node) these are stored in /etc/kubernetes/admin.conf with blended with other users.
 
