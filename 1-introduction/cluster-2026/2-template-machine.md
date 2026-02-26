@@ -41,8 +41,14 @@ network:
 ```
 # Disable swap (mandatory)
 sudo swapoff -a
-sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
-
+```
+- Go ahead and edit the /etc/fstab file, and remove the last line:
+```
+/swap.img      none    swap    sw      0       0
+```
+by adding a comment sige (#) at its beginning.
+- Run this:
+```
 # Load kernel modules for networking
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
 overlay
@@ -86,4 +92,25 @@ sudo apt-get install -y kubelet=1.34.0-1.1 kubeadm=1.34.0-1.1 kubectl=1.34.0-1.1
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
+#### Some last tests and preparations
+- Run:
+```
+free -m
+```
+(if swap is 0, we're good)
+- Clear machine id:
+```
+sudo truncate -s 0 /etc/machine-id
+sudo rm /var/lib/dbus/machine-id
+sudo ln -s /etc/machine-id /var/lib/dbus/machine-id
+```
+- Make sure the "big three" are installed:
+```
+sudo apt-mark hold kubelet kubeadm kubectl
+```
+- Record identity before shutdoen:
+```
+sudo cat /sys/class/dmi/id/product_uuid
+```
+(record this number for folowup id fix in clones)
 - You can now power off this machine, it is ready for cloning.
