@@ -54,7 +54,7 @@ After creating your cluster (using **minikube start** command) you'll have:
 Since the private key (ca.key) should not be moved outsite of the control node, we can do the whole thing in the control node, in the certs directory.
 - Use the following commands at the control node:
   - ssh -p <cluster-name> -n <control node name>  
-  example:  **ssh -p four -n four**
+  example:  **minikube ssh -p four -n four**
   - **sudo su**
   - **/var/lib/minikube/certs/**
   - Looking at this directory I can find:
