@@ -25,9 +25,9 @@ module "eks" {
   cluster_name    = var.cluster_name
   cluster_version = "1.29"
 
-  vpc_id                   = module.vpc.vpc_id
-  subnet_ids               = module.vpc.private_subnets
-  control_plane_subnet_ids = module.vpc.private_subnets
+  vpc_id                   = module.eks-vpc.vpc_id
+  subnet_ids               = module.eks-vpc.private_subnets
+  control_plane_subnet_ids = module.eks-vpc.private_subnets
 
   cluster_endpoint_public_access = true
 
@@ -69,7 +69,7 @@ resource "aws_eks_access_policy_association" "admins" {
 }
 
 # 3. VPC Module
-module "vpc" {
+module "eks-vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 5.0"
 
