@@ -19,7 +19,7 @@ variable "admin_users" {
 }
 
 variable "desired_nodes" {
-  type        = int
+  type        = number
   description = "The number of desired node to run in the cluster"
   default     = 2
 }
