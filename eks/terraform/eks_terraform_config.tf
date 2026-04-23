@@ -1,11 +1,9 @@
-# terraform/main.tf
-
 terraform {
-  required_version = ">= 1.0"
+  required_version = ">= 1.3" # Modern TF version
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"
+      version = "~> 5.40" # Updated to a more recent v5 point release
     }
   }
 }
@@ -14,44 +12,70 @@ provider "aws" {
   region = var.region
 }
 
-# Get available AZs
 data "aws_availability_zones" "available" {}
 
-# 1. EKS Cluster Module
+# 1. EKS Cluster Module (Modernized)
+
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
 
   cluster_name    = var.cluster_name
-  cluster_version = "1.29"
+  cluster_version = "1.30"
 
+  # Networking
   vpc_id                   = module.eks-vpc.vpc_id
   subnet_ids               = module.eks-vpc.private_subnets
   control_plane_subnet_ids = module.eks-vpc.private_subnets
 
+  # Access Configuration (The "Credentials Fix")
+  # 1. Use the new API mode instead of just the old configmap
+  authentication_mode = "API_AND_CONFIG_MAP"
+  
+  # 2. Automatically give the identity running Terraform full cluster access
+  enable_cluster_creator_admin_permissions = true
+
+  # Networking & Connectivity
   cluster_endpoint_public_access = true
 
   cluster_addons = {
-    coredns    = { most_recent = true }
-    kube-proxy = { most_recent = true }
-    vpc-cni    = { most_recent = true }
+    coredns                = { most_recent = true }
+    kube-proxy             = { most_recent = true }
+    vpc-cni                = { most_recent = true }
+    eks-pod-identity-agent = { most_recent = true } # Modern IAM for pods
   }
 
+  # Node Groups
   eks_managed_node_groups = {
     default = {
-      instance_types = ["t3.small"]
-      min_size       = 0
-      max_size       = 2  
-      desired_size   = var.desired_nodes
-      disk_size      = 20
+      # t3.medium is safer; t3.small often runs out of memory for system pods
+      instance_types = ["t3.medium"]
+      
+      min_size     = 1
+      max_size     = 3
+      desired_size = var.desired_nodes
+
+      # Bottlerocket is the modern, hardened OS for EKS
+      ami_type = "BOTTLEROCKET_x86_64"
+      
+      # Ensure nodes have enough disk for images
+      disk_size = 20
     }
+  }
+
+  # Tagging for visibility
+  tags = {
+    Environment = "dev"
+    Terraform   = "true"
   }
 }
 
-# 2. Access Configuration (Moved OUTSIDE the module block)
+
+
+
+# 2. Access Configuration (Now correctly recognized by the module above)
 resource "aws_eks_access_entry" "admins" {
   for_each      = toset(var.admin_users)
-  # Use the module's output, not "aws_eks_cluster.this"
   cluster_name  = module.eks.cluster_name 
   principal_arn = each.value
   type          = "STANDARD"
@@ -68,7 +92,7 @@ resource "aws_eks_access_policy_association" "admins" {
   }
 }
 
-# 3. VPC Module
+# 3. VPC Module (Standard clean setup)
 module "eks-vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 5.0"
@@ -83,8 +107,10 @@ module "eks-vpc" {
   enable_nat_gateway = true
   single_nat_gateway = true
 
-  public_subnet_tags = { "kubernetes.io/role/elb" = "1" }
-  private_subnet_tags = { "kubernetes.io/role/internal-elb" = "1" }
+  public_subnet_tags = {
+    "kubernetes.io/role/elb" = "1"
+  }
+  private_subnet_tags = {
+    "kubernetes.io/role/internal-elb" = "1"
+  }
 }
-
-# ... (outputs remain the same)
