@@ -8,7 +8,7 @@
 - If Helm is not installed, install it now:  
 Use [this link](https://helm.sh/docs/intro/install/#from-apt-debianubuntu) to install Helm on Ubuntu.  
 - Verify your installation:  
-**sudo apt-get install helm**
+**helm version**
 
 
 
