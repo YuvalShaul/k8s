@@ -80,12 +80,14 @@ Since the private key (ca.key) should not be moved outsite of the control node, 
   **chmod 777 dave.\***
   - Go into my host computer, and copy the files:
     - **cd ~/.kube**  
-    - minikube cp  four:/tmp/dave.crt  /home/osboxes/.kube/ca.crt  -p four
-    minikube cp  four:/tmp/dave.key  /home/osboxes/.kube/ca.crt  -p four
-    minikube cp  four:/tmp/ca.crt  /home/osboxes/.kube/ca.crt  -p four
+    - **minikube cp  four:/var/lib/minikube/certs/dave/dave.crt  /home/osboxes/.kube/dave.crt  -p four**  
+    **minikube cp  four:/var/lib/minikube/certs/dave/dave.key  /home/osboxes/.kube/dave.key  -p four**  
+    **minikube cp  four:/var/lib/minikube/certs/dave/ca.crt  /home/osboxes/.kube/ca.crt  -p four**  
+    (each file needs its own destination name - giving them all the same target would overwrite one with the next)
   - Change file permissions:  
-    - **chmod 000 dave.key**
-    - **chmod 644 dave.crt**
+    - **chmod 600 dave.key**
+    - **chmod 644 dave.crt**  
+    (the key must stay readable by its owner - with 000 even you cannot read it, and kubectl fails with a permission denied error)
   - remove the files from the control node:  
   **cd ..**  
   **rm -rf dave**
