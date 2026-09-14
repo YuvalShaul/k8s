@@ -109,7 +109,7 @@ Since the private key (ca.key) should not be moved outsite of the control node, 
       clusters:  
       - cluster:  
           certificate-authority-data: CA_CRT  
-          server:  https://192.168.122.10:6443
+          server:  API_SERVER
         name: kubernetes  
       contexts:  
       - context:  
@@ -123,6 +123,10 @@ Since the private key (ca.key) should not be moved outsite of the control node, 
           client-certificate-data: CLIENT_CRT  
           client-key-data: CLIENT_KEY  
 
+- Replace **API_SERVER** with your own cluster's address - every cluster gets a different one, so do not hard-code it.  
+Read it with:  
+**kubectl config view -o jsonpath='{.clusters[?(@.name=="four")].cluster.server}'**  
+(on the docker driver mine was **https://192.168.49.2:8443**)
 - Fill this file with the 3 base64 textx you have created before.  
 **Make sure you get no new lines added !!!**  
 **Notice that VSCODE adds spaces instead of those new lines. Remove these !!!**
@@ -141,6 +145,6 @@ Since the private key (ca.key) should not be moved outsite of the control node, 
       my-deployment-56474dbc6-shfpn   1/1     Running   2 (34h ago)   3d5h
       > 
       > kubectl get pods --kubeconfig .kube/daveconfig 
-      Error from server (Forbidden): pods is forbidden: User "dave " cannot list resource "pods" in API group "" in the namespace "default"
+      Error from server (Forbidden): pods is forbidden: User "dave" cannot list resource "pods" in API group "" in the namespace "default"
       > 
 
