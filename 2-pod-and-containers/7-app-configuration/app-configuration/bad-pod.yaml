@@ -14,7 +14,7 @@ spec:
     env:
       # configuration baked into the manifest - a new value means a new pod spec
       - name: APP_MODE
-        value: "value2"
+        value: "production"
       # the password is sitting here in plain text, for everyone to read
       - name: DB_PASSWORD
         value: "mypassword"
