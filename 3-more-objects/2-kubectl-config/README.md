@@ -26,6 +26,29 @@ Use [this link](https://kubernetes.io/docs/concepts/configuration/organize-clust
 | current-context | Which of the contexts kubectl should use right now. |  
 
 - So a context does not hold any credentials of its own - it just says "use this user against that cluster".
+- This is the **daveconfig** file we built in the previous lab - a small config with exactly one of each (the base64 blobs are shortened here):
+
+      apiVersion: v1
+      kind: Config
+      current-context: dave@kubernetes
+      preferences: {}
+      clusters:
+      - cluster:
+          certificate-authority-data: LS0tLS1CRUdJTiBD...
+          server: https://192.168.49.2:8443
+        name: kubernetes
+      contexts:
+      - context:
+          cluster: kubernetes
+          user: dave
+        name: dave@kubernetes
+      users:
+      - name: dave
+        user:
+          client-certificate-data: LS0tLS1CRUdJTiBD...
+          client-key-data: LS0tLS1CRUdJTiBS...
+
+- Your own **~/.kube/config** has the same shape, only with more entries in each list.
 
 ## View your configuration
 
@@ -97,8 +120,17 @@ Until now you worked as the admin user. Let's add dave (from the previous lab) n
 - Make sure dave's certificate files are still where we left them:  
 **ls ~/.kube/dave.crt ~/.kube/dave.key**
 - Add dave to the **users** list of your own config (note: no **--kubeconfig** flag this time - we are writing into **~/.kube/config**):  
-**kubectl config set-credentials dave \**  
+**kubectl config set-credentials dave \\**  
 &nbsp;&nbsp;**--client-certificate=$HOME/.kube/dave.crt --client-key=$HOME/.kube/dave.key --embed-certs=true**
+- Command parameters:
+
+| Parameter | Purpose |  
+| :--------- | :----------- |  
+| --kubeconfig \<file\> | Which file to write to. **Without it** - as here - kubectl edits your own **~/.kube/config**. The file is created if it is missing. |  
+| --client-certificate / --client-key | Dave's identity - this is what the API server checks to decide who you are. |  
+| --embed-certs=true | Writes the **contents** of those files into the config, base64 encoded. Without it kubectl writes the file **paths** instead, which works too but ties the config to those exact locations. |  
+| --certificate-authority | (on **set-cluster**) The CA certificate - this is how kubectl verifies it is talking to the right API server. |  
+
 - Check that he is there:  
 **kubectl config get-users**
 - Now create a context that uses your existing cluster with this new user:  

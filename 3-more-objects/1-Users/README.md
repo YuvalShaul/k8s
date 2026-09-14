@@ -95,66 +95,34 @@ Since the private key (ca.key) should not be moved outsite of the control node, 
 
 ## Create a config file for dave
 
+Dave now has certificates, but no way to tell kubectl to use them. That is what a **kubeconfig** file is for.  
 A kubeconfig file is just YAML, so you could write it by hand - but pasting three long base64 blobs into a template is error prone (editors love to wrap them or turn the wrapping into spaces).  
-Instead, let **kubectl** build the file for you. Every **kubectl config** command accepts a **--kubeconfig** flag, and if that file does not exist it is created.
+Instead, let **kubectl** build the file for you. Every **kubectl config** command accepts a **--kubeconfig** flag, saying which file to write to, and if that file does not exist it is created.
 
 - Make sure you are where the certificate files are:  
 **cd ~/.kube**
 - Read your cluster's address - every cluster gets a different one, so do not hard-code it:  
 **API_SERVER=$(kubectl config view -o jsonpath='{.clusters[?(@.name=="four")].cluster.server}')**  
 (on the docker driver mine was **https://192.168.49.2:8443**)
-- Add the cluster:  
+- Add the cluster - **where** to connect, and the CA certificate used to verify the API server:  
 **kubectl config set-cluster kubernetes \\**  
 &nbsp;&nbsp;**--server="$API_SERVER" \\**  
 &nbsp;&nbsp;**--certificate-authority=ca.crt --embed-certs=true \\**  
 &nbsp;&nbsp;**--kubeconfig=daveconfig**
-- Add the user:  
+- Add the user - **who** dave is, the certificate and key we just created for him:  
 **kubectl config set-credentials dave \\**  
 &nbsp;&nbsp;**--client-certificate=dave.crt --client-key=dave.key --embed-certs=true \\**  
 &nbsp;&nbsp;**--kubeconfig=daveconfig**
-- Add a context (a context is just a cluster + user pair):  
+- Add a context - a cluster + user pair:  
 **kubectl config set-context dave@kubernetes \\**  
 &nbsp;&nbsp;**--cluster=kubernetes --user=dave \\**  
 &nbsp;&nbsp;**--kubeconfig=daveconfig**
 - Make it the current context:  
 **kubectl config use-context dave@kubernetes --kubeconfig=daveconfig**
-- Command parameters:
-
-| Parameter | Purpose |  
-| :--------- | :----------- |  
-| --kubeconfig \<file\> | Which kubeconfig file to write to. Without it kubectl would edit your own ~/.kube/config. The file is created if it is missing. |  
-| --embed-certs=true | Reads the certificate files and writes their **contents** into the file, base64 encoded on a single line. Without it kubectl writes the file **paths** instead, which works too but ties the config to those exact locations. |  
-| --certificate-authority | The CA certificate - this is how dave's kubectl verifies it is talking to the right API server. |  
-| --client-certificate / --client-key | Dave's identity - this is what the API server checks to decide who you are. |
-
-- Because **--embed-certs=true** does the base64 encoding for us, there is no need to run **base64 -w 0** on anything, and no newline/whitespace problems to worry about.
+- **--embed-certs=true** writes the **contents** of the certificate files into the config file, base64 encoded, instead of their paths - so the file works even if the certificates are moved. It also does the encoding for us, so there is no need to run **base64 -w 0** on anything, and no newline/whitespace problems to worry about.
 - Check the result:  
-**kubectl config view --kubeconfig=daveconfig**  
-(certificate data is shown as **DATA+OMITTED** - that is kubectl hiding it, not an empty file. Use **--raw** to see the real thing)
-- The file kubectl just wrote looks like this (the base64 blobs are shortened here):
-
-      apiVersion: v1
-      kind: Config
-      current-context: dave@kubernetes
-      preferences: {}
-      clusters:
-      - cluster:
-          certificate-authority-data: LS0tLS1CRUdJTiBD...
-          server: https://192.168.49.2:8443
-        name: kubernetes
-      contexts:
-      - context:
-          cluster: kubernetes
-          user: dave
-        name: dave@kubernetes
-      users:
-      - name: dave
-        user:
-          client-certificate-data: LS0tLS1CRUdJTiBD...
-          client-key-data: LS0tLS1CRUdJTiBS...
-
-- These commands are idempotent - running **set-cluster** / **set-credentials** / **set-context** again just updates that entry, so fixing a typo does not mean editing YAML by hand.
-- The file is already in **~/.kube** (that is where we ran the commands), but note that a file sitting in ~/.kube is **not** used automatically - only **~/.kube/config** is. You point at it with **--kubeconfig** (below) or with the **KUBECONFIG** environment variable.
+**kubectl config view --kubeconfig=daveconfig**
+- The next lab is all about these **kubectl config** commands and the file they wrote - what is inside it, and how to switch between users and clusters without typing **--kubeconfig** every time.
 
 ## Use the new config file
 
