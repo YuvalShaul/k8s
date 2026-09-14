@@ -1,0 +1,22 @@
+# DO NOT DO THIS.
+# This pod is an anti-pattern demo: the configuration and the credentials
+# are hardcoded locally inside the pod spec instead of coming from a
+# ConfigMap and a Secret.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bad-pod
+spec:
+  containers:
+  - name: busybox
+    image: busybox:latest
+    command: ["sleep", "3600"]
+    env:
+      # configuration baked into the manifest - a new value means a new pod spec
+      - name: CONFIGMAP_VAR
+        value: "value2"
+      # the password is sitting here in plain text, for everyone to read
+      - name: SECRET_VAR
+        value: "mypassword"
+      - name: DB_CONNECTION_STRING
+        value: "postgres://admin:mypassword@db.internal:5432/orders"
