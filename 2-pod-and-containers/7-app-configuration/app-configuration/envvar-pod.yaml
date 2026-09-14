@@ -12,12 +12,12 @@ spec:
     ports:
     - containerPort: 80
     env:
-      - name: CONFIGMAP_VAR
+      - name: APP_MODE
         valueFrom:
           configMapKeyRef:
             name: my-configmap
             key: key2
-      - name: SECRET_VAR
+      - name: DB_PASSWORD
         valueFrom:
           secretKeyRef:
             name: my-secret

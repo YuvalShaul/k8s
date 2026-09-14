@@ -22,8 +22,8 @@ and all of them are hardcoded right there in the pod spec.
 - Exec into the pod:  
 **kubectl exec -it bad-pod -- sh**
 - The application gets its configuration just fine:  
-**echo $CONFIGMAP_VAR**  
-**echo $SECRET_VAR**  
+**echo $APP_MODE**  
+**echo $DB_PASSWORD**  
 From inside the container this pod looks perfectly healthy. The problems are all
 outside of it.
 
@@ -31,7 +31,7 @@ outside of it.
 
 - **The password is in plain sight.** Ask the cluster to describe the pod:  
 **kubectl describe pod bad-pod**  
-The Environment section prints **SECRET_VAR: mypassword** and the full database
+The Environment section prints **DB_PASSWORD: mypassword** and the full database
 connection string. The same is true for:  
 **kubectl get pod bad-pod -o yaml**
 - **Anyone who can read pods can read the password.** Reading pods is something
@@ -92,14 +92,14 @@ type:
 - Exec into the pod:  
 **kubectl exec -it envvar-pod -- sh**
 - Access the environment variable to see the value from the **configmap**:  
-**echo $CONFIGMAP_VAR**
+**echo $APP_MODE**
 - Access the environment variable to see the value from the **secret**:  
-**echo $SECRET_VAR**
+**echo $DB_PASSWORD**
 - The container sees exactly what the bad pod saw - but now look at the pod from
 the outside:  
 **kubectl describe pod envvar-pod**  
 The Environment section prints only
-**SECRET_VAR: \<set to the key 'pass' in secret 'my-secret'\>** - the value
+**DB_PASSWORD: \<set to the key 'pass' in secret 'my-secret'\>** - the value
 itself is no longer exposed.
 
 ## Use the configmap and secret in a pod using volumes

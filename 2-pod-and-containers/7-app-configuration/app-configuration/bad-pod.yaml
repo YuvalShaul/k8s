@@ -13,10 +13,10 @@ spec:
     command: ["sleep", "3600"]
     env:
       # configuration baked into the manifest - a new value means a new pod spec
-      - name: CONFIGMAP_VAR
+      - name: APP_MODE
         value: "value2"
       # the password is sitting here in plain text, for everyone to read
-      - name: SECRET_VAR
+      - name: DB_PASSWORD
         value: "mypassword"
       - name: DB_CONNECTION_STRING
         value: "postgres://admin:mypassword@db.internal:5432/orders"
