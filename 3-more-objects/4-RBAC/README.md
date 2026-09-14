@@ -13,6 +13,8 @@ In the last lab, we have reached this scenario, when trying to access pos resour
     > 
 
 
+(if you added the **dave@four** context in the kubectl config lab, you can use **--context=dave@four** instead of **--kubeconfig ~/.kube/daveconfig** in every command below)
+
 - [Create and apply the role](#Create-and-apply-the-role)
 - [Create and apply the role binding](#Create-and-apply-the-role-binding)
 
