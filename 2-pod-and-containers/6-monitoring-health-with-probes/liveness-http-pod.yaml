@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    test: liveness
+  name: liveness-http-pod
+spec:
+  containers:
+  - name: liveness-http
+    image: nginx:1.19.1
+    command:
+    - /bin/sh
+    - -c
+    - echo ok > /usr/share/nginx/html/healthz; (sleep 30; rm -f /usr/share/nginx/html/healthz) & nginx -g 'daemon off;'
+    livenessProbe:
+      httpGet:
+        path: /healthz
+        port: 80
+      initialDelaySeconds: 5
+      periodSeconds: 5
