@@ -25,7 +25,7 @@ It uses nodeName to directly select a specific node.
 What if we directly choose the control node?  
 Pods have not been running on this node so far.  
 This is because there is a [taint](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) preventing pods to run there.
-- Edit the **name-pod.yaml** file to specifically name the control node (k8s-control).
+- Edit the **name-pod.yaml** file to specifically name the control node (four).
 - Apply the file again.  
 Verify that the pod is running on the control node.
 - Cool !!!
