@@ -23,7 +23,7 @@ minikube start -p four -n 4 --network-plugin=cni --cni=calico
 ```
 kubectl apply -f netpods.yaml
 ```
-- Several of these pods will be scheduled to our test node (I'll be using k8s-c).  
+- Several of these pods will be scheduled to our test node (I'll be using four-m03).  
 Find how many of those have landed in the testing node:  
 ```
 kubectl get pods -o wide | grep four-m03 | wc -l
