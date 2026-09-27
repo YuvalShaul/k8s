@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: net-deployment
 spec:
-  replicas: 18
+  replicas: 4
   selector:
     matchLabels:
       app: net-deployment
@@ -14,8 +14,7 @@ spec:
     spec:
       containers:
       - name: netpod
-        image: nicolaka/netshoot:latest
+        image: nicolaka/netshoot:v0.16
         command:
           - sleep
           - "3600"
-
