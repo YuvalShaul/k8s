@@ -14,6 +14,8 @@
     - a Nat-GW in pub1
     - 2 private subnet
       - (we add a default route to the private RT, pointing to the Nat-GW)
+- Note: in `module "my_vpc_network"` and `module "my_eks_cluster"`, the names are invented by us.
+  - Terraform only cares about the `source` line; the name is just how we refer to it (e.g. `module.my_vpc_network.vpc_id`).
 - A [TF eks module](https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest) call creates: 
   - 2 IAM roles:
     - EKS Cluster Service Role (the name is not mandatory), with the following aws managed IAM policy:

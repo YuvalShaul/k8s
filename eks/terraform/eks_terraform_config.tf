@@ -16,7 +16,7 @@ data "aws_availability_zones" "available" {}
 
 # 1. EKS Cluster Module (Modernized)
 
-module "eks" {
+module "my_eks_cluster" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
 
@@ -24,9 +24,9 @@ module "eks" {
   cluster_version = "1.30"
 
   # Networking
-  vpc_id                   = module.eks-vpc.vpc_id
-  subnet_ids               = module.eks-vpc.private_subnets
-  control_plane_subnet_ids = module.eks-vpc.private_subnets
+  vpc_id                   = module.my_vpc_network.vpc_id
+  subnet_ids               = module.my_vpc_network.private_subnets
+  control_plane_subnet_ids = module.my_vpc_network.private_subnets
 
   # Access Configuration (The "Credentials Fix")
   # 1. Use the new API mode instead of just the old configmap
@@ -76,14 +76,14 @@ module "eks" {
 # 2. Access Configuration (Now correctly recognized by the module above)
 resource "aws_eks_access_entry" "admins" {
   for_each      = toset(var.admin_users)
-  cluster_name  = module.eks.cluster_name 
+  cluster_name  = module.my_eks_cluster.cluster_name 
   principal_arn = each.value
   type          = "STANDARD"
 }
 
 resource "aws_eks_access_policy_association" "admins" {
   for_each      = toset(var.admin_users)
-  cluster_name  = module.eks.cluster_name
+  cluster_name  = module.my_eks_cluster.cluster_name
   principal_arn = each.value
   policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
 
@@ -93,7 +93,7 @@ resource "aws_eks_access_policy_association" "admins" {
 }
 
 # 3. VPC Module (Standard clean setup)
-module "eks-vpc" {
+module "my_vpc_network" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 5.0"
 
